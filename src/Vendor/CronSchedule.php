@@ -115,7 +115,7 @@ class CronSchedule
             'DEC' => 12
         ];
 
-        //@TODO - add 7/SUN to $arrDaysOfWeek
+        //@TODO - add SUN=>7 to $arrDaysOfWeek
         $arrDaysOfWeek = [
             'SUN' => 0,
             'MON' => 1,
@@ -185,13 +185,14 @@ class CronSchedule
             $hasRange = (($posRange = strpos($segment, '-')) !== false);
             $hasInterval = (($posIncrement = strpos($segment, '/')) !== false);
 
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////
             // Check: Increment without range is invalid
+            // if (! $hasRange && $hasInterval) {
+            //     throw new \Exception("Invalid Range ($errorName).");
+            // }
 
-            //if(!$hasRange && $hasInterval)                                                throw new \Exception("Invalid Range ($errorName).");
-
+            ///////////////////////////////////////////////
             // Check: Increment must be final specification
-
             if ($hasRange && $hasInterval) {
                 if ($posIncrement < $posRange) {
                     throw new \Exception("Invalid order ($errorName).");
@@ -204,6 +205,7 @@ class CronSchedule
             $segmentNumber2 = '';
             $segmentIncrement = '';
             $intIncrement = 1;
+
             if ($hasInterval) {
                 $segmentNumber1 = substr($segment, 0, $posIncrement);
                 $segmentIncrement = substr($segment, $posIncrement + 1);
@@ -889,6 +891,7 @@ class CronSchedule
                 $this->_lang['day: 4_plural'] = 'Thursdays';
                 $this->_lang['day: 5_plural'] = 'Fridays';
                 $this->_lang['day: 6_plural'] = 'Saturdays';
+                $this->_lang['day: 7_plural'] = 'Sundays';
                 $this->_lang['month: 1'] = 'January';
                 $this->_lang['month: 2'] = 'February';
                 $this->_lang['month: 3'] = 'March';
@@ -1008,6 +1011,7 @@ class CronSchedule
                 $this->_lang['day: 4_plural'] = 'donderdagen';
                 $this->_lang['day: 5_plural'] = 'vrijdagen';
                 $this->_lang['day: 6_plural'] = 'zaterdagen';
+                $this->_lang['day: 7_plural'] = 'zondagen';
                 $this->_lang['month: 1'] = 'januari';
                 $this->_lang['month: 2'] = 'februari';
                 $this->_lang['month: 3'] = 'maart';
@@ -1430,7 +1434,7 @@ class CronSchedule
 
         } else {
             $arrDays = array();
-            for ($x = 0; $x <= 6; $x++) {
+            for ($x = 0; $x <= 7; $x++) {
                 if ($collectDays & pow(2, $x)) {
                     $arrDays[] = $x;
                 }
