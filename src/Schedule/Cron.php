@@ -1,13 +1,12 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Schedule;
+namespace EagleDevelopers\NovaScheduledJobs\Schedule;
 
 use Carbon\Carbon;
 use Cron\CronExpression;
 
 class Cron
 {
-
     public static function nextRunAt($expression, $tz = null)
     {
         $cron = CronExpression::factory($expression);
@@ -19,5 +18,4 @@ class Cron
 
         return $nextRun;
     }
-
 }

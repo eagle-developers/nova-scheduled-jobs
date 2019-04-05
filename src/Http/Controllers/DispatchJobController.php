@@ -1,12 +1,12 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Http\Controllers;
+namespace EagleDevelopers\NovaScheduledJobs\Http\Controllers;
 
+use EagleDevelopers\NovaScheduledJobs\Rules\JobExist;
 use Illuminate\Http\Request;
-use Llaski\NovaScheduledJobs\Rules\JobExist;
 
 class DispatchJobController
-{    
+{
     /**
      * Dispatch job command.
      *
@@ -17,7 +17,7 @@ class DispatchJobController
         $data = $request->validate([
             'command' => ['required', 'string', new JobExist]
         ]);
-        
+
         $command = resolve($data['command']);
 
         dispatch($command);

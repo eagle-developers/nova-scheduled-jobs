@@ -1,20 +1,19 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Tests;
+namespace EagleDevelopers\NovaScheduledJobs\Tests;
 
 use Cron\CronExpression;
+use EagleDevelopers\NovaScheduledJobs\Schedule\Cron;
+use EagleDevelopers\NovaScheduledJobs\Tests\Fixtures\Jobs\UpdateOrders;
+use EagleDevelopers\NovaScheduledJobs\Vendor\CronSchedule;
 use Illuminate\Support\Carbon;
-use Llaski\NovaScheduledJobs\Schedule\Cron;
-use Llaski\NovaScheduledJobs\Tests\Fixtures\Jobs\UpdateOrders;
-use Llaski\NovaScheduledJobs\Vendor\CronSchedule;
 
 class ListJobsTest extends TestCase
 {
-
     /** @test */
     public function itReturnsAnEmptyArrayIfThereAreNoJobsScheduled()
     {
-        $response = $this->getJson('nova-vendor/llaski/nova-scheduled-jobs/jobs');
+        $response = $this->getJson('nova-vendor/eagle-developers/nova-scheduled-jobs/jobs');
 
         $response->assertStatus(200);
         $response->assertJson([]);
@@ -23,7 +22,7 @@ class ListJobsTest extends TestCase
     /** @test */
     public function itReturnsAListOfScheduledJobs()
     {
-        $kernel = app('Llaski\NovaScheduledJobs\Tests\Fakes\Kernel', [
+        $kernel = app('EagleDevelopers\NovaScheduledJobs\Tests\Fakes\Kernel', [
             'scheduledJobs' => [
                 [
                     'command' => 'cache:clear',
@@ -50,7 +49,7 @@ class ListJobsTest extends TestCase
         ]);
         app()->instance('Illuminate\Contracts\Console\Kernel', $kernel);
 
-        $response = $this->getJson('nova-vendor/llaski/nova-scheduled-jobs/jobs');
+        $response = $this->getJson('nova-vendor/eagle-developers/nova-scheduled-jobs/jobs');
 
         $response->assertStatus(200);
         $response->assertJson([
@@ -89,5 +88,4 @@ class ListJobsTest extends TestCase
             ],
         ]);
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Tests\Fixtures\Jobs;
+namespace EagleDevelopers\NovaScheduledJobs\Tests\Fixtures\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -24,6 +24,6 @@ class UpdateOrders implements ShouldQueue
      */
     public function handle()
     {
-        //Some fake logic goes here...
+        // some fake logic goes here...
     }
 }

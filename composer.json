@@ -1,18 +1,24 @@
 {
-    "name": "llaski/nova-scheduled-jobs",
+    "name": "eagle-developers/nova-scheduled-jobs",
     "description": "A Laravel Nova card to view your scheduled jobs.",
     "keywords": [
         "laravel",
         "nova"
     ],
-    "homepage": "https://github.com/llaski/nova-scheduled-jobs",
+    "homepage": "https://github.com/eagle-developers/nova-scheduled-jobs",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Eagle Metal Products Web Developers",
+            "email": "webdev@eaglemetal.com",
+            "homepage": "https://github.com/eagle-developers",
+            "role": "Fork Developers"
+        },
         {
             "name": "Larry Laski",
             "email": "larry.laski@gmail.com",
             "homepage": "https://larrylaski.com",
-            "role": "Developer"
+            "role": "Original Developer"
         }
     ],
     "require": {
@@ -27,18 +33,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Llaski\\NovaScheduledJobs\\": "src/"
+            "EagleDevelopers\\NovaScheduledJobs\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Llaski\\NovaScheduledJobs\\Tests\\": "tests"
+            "EagleDevelopers\\NovaScheduledJobs\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Llaski\\NovaScheduledJobs\\NovaScheduledJobsServiceProvider"
+                "EagleDevelopers\\NovaScheduledJobs\\NovaScheduledJobsServiceProvider"
             ]
         }
     },

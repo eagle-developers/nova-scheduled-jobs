@@ -1,7 +1,7 @@
 # Nova Scheduled Jobs
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/llaski/nova-scheduled-jobs.svg?style=flat-square)](https://packagist.org/packages/llaski/nova-scheduled-jobs)
-[![Total Downloads](https://img.shields.io/packagist/dt/llaski/nova-scheduled-jobs.svg?style=flat-square)](https://packagist.org/packages/llaski/nova-scheduled-jobs)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/eagle-developers/nova-scheduled-jobs.svg?style=flat-square)](https://packagist.org/packages/eagle-developers/nova-scheduled-jobs)
+[![Total Downloads](https://img.shields.io/packagist/dt/eagle-developers/nova-scheduled-jobs.svg?style=flat-square)](https://packagist.org/packages/eagle-developers/nova-scheduled-jobs)
 
 ## Includes both a tool and card to display your scheduled commands and jobs
 
@@ -14,7 +14,7 @@
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
-composer require llaski/nova-scheduled-jobs
+composer require eagle-developers/nova-scheduled-jobs
 ```
 
 To setup the tool, you must register the tool with Nova. This is typically done in the `tools` method of the `NovaServiceProvider`.
@@ -28,7 +28,7 @@ public function tools()
 {
     return [
         // ...
-        new \Llaski\NovaScheduledJobs\NovaScheduledJobsTool,
+        new \EagleDevelopers\NovaScheduledJobs\NovaScheduledJobsTool,
     ];
 }
 ```
@@ -44,7 +44,7 @@ public function cards()
 {
     return [
         // ...
-        new \Llaski\NovaScheduledJobs\NovaScheduledJobsCard,
+        new \EagleDevelopers\NovaScheduledJobs\NovaScheduledJobsCard,
     ];
 }
 ```
@@ -69,6 +69,7 @@ If you discover any security related issues, please email larry.laski@gmail.com 
 
 ## Credits
 
+- [Eagle Developers](https://github.com/eagle-developers)
 - [Larry Laski](https://github.com/llaski)
 - [All Contributors](../../contributors)
 

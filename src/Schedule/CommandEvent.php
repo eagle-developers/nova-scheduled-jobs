@@ -1,6 +1,6 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Schedule;
+namespace EagleDevelopers\NovaScheduledJobs\Schedule;
 
 use Illuminate\Console\Parser;
 use Illuminate\Contracts\Console\Kernel;
@@ -20,11 +20,10 @@ class CommandEvent extends Event
 
         $commands = app(Kernel::class)->all();
 
-        if (!isset($commands[$command])) {
+        if (! isset($commands[$command])) {
             return '';
         }
 
         return get_class($commands[$command]);
     }
-
 }

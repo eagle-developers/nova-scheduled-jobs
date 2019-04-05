@@ -1,6 +1,6 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Tests\Fakes;
+namespace EagleDevelopers\NovaScheduledJobs\Tests\Fakes;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -38,7 +38,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         collect($this->scheduledJobs)->each(function ($job) use ($schedule) {
-
             if (array_has($job, 'job')) {
                 $command = $schedule->job($job['job']);
             } else {
@@ -52,5 +51,4 @@ class Kernel extends ConsoleKernel
             });
         });
     }
-
 }

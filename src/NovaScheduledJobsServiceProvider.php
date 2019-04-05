@@ -1,6 +1,6 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs;
+namespace EagleDevelopers\NovaScheduledJobs;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -39,8 +39,7 @@ class NovaScheduledJobsServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova'])
-            ->prefix('nova-vendor/llaski/nova-scheduled-jobs')
+            ->prefix('nova-vendor/eagle-developers/nova-scheduled-jobs')
             ->group(__DIR__ . '/../routes/api.php');
     }
-
 }

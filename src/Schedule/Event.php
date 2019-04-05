@@ -1,8 +1,8 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Schedule;
+namespace EagleDevelopers\NovaScheduledJobs\Schedule;
 
-use Llaski\NovaScheduledJobs\Vendor\CronSchedule;
+use EagleDevelopers\NovaScheduledJobs\Vendor\CronSchedule;
 
 abstract class Event
 {
@@ -21,6 +21,7 @@ abstract class Event
     {
         try {
             $reflection = new \ReflectionClass($this->className());
+
             return (string) array_get($reflection->getDefaultProperties(), 'description', '');
         } catch (\ReflectionException $exception) {
             return '';
@@ -46,5 +47,4 @@ abstract class Event
     {
         return $this->event->{$name};
     }
-
 }

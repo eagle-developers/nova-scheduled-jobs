@@ -1,26 +1,25 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Tests;
+namespace EagleDevelopers\NovaScheduledJobs\Tests;
 
 use Cron\CronExpression;
+use EagleDevelopers\NovaScheduledJobs\Schedule\Cron;
+use EagleDevelopers\NovaScheduledJobs\Tests\Fixtures\Jobs\UpdateOrders;
+use EagleDevelopers\NovaScheduledJobs\Tests\Fixtures\Jobs\UpdateOrdersWithDependencies;
+use EagleDevelopers\NovaScheduledJobs\Vendor\CronSchedule;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Bus;
-use Llaski\NovaScheduledJobs\Schedule\Cron;
-use Llaski\NovaScheduledJobs\Tests\Fixtures\Jobs\UpdateOrders;
-use Llaski\NovaScheduledJobs\Tests\Fixtures\Jobs\UpdateOrdersWithDependencies;
-use Llaski\NovaScheduledJobs\Vendor\CronSchedule;
 
 class DispatchJobTest extends TestCase
 {
-
     /** @test */
     public function canDispatchJob()
     {
         Bus::fake();
 
-        $this->postJson('nova-vendor/llaski/nova-scheduled-jobs/dispatch-job', [
-                'command' => UpdateOrders::class,
-            ])->assertStatus(200);
+        $this->postJson('nova-vendor/eagle-developers/nova-scheduled-jobs/dispatch-job', [
+            'command' => UpdateOrders::class,
+        ])->assertStatus(200);
 
         Bus::assertDispatched(UpdateOrders::class);
     }
@@ -30,9 +29,9 @@ class DispatchJobTest extends TestCase
     {
         Bus::fake();
 
-        $this->postJson('nova-vendor/llaski/nova-scheduled-jobs/dispatch-job', [
-                'command' => UpdateOrdersWithDependencies::class,
-            ])->assertStatus(200);
+        $this->postJson('nova-vendor/eagle-developers/nova-scheduled-jobs/dispatch-job', [
+            'command' => UpdateOrdersWithDependencies::class,
+        ])->assertStatus(200);
 
         Bus::assertDispatched(UpdateOrdersWithDependencies::class);
     }

@@ -1,8 +1,8 @@
 <?php
 
+use EagleDevelopers\NovaScheduledJobs\Http\Controllers\DispatchJobController;
+use EagleDevelopers\NovaScheduledJobs\Http\Controllers\JobsController;
 use Illuminate\Support\Facades\Route;
-use Llaski\NovaScheduledJobs\Http\Controllers\JobsController;
-use Llaski\NovaScheduledJobs\Http\Controllers\DispatchJobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,5 @@ use Llaski\NovaScheduledJobs\Http\Controllers\DispatchJobController;
 |
  */
 
-Route::get('jobs', JobsController::class . '@index');
-Route::post('dispatch-job', DispatchJobController::class . '@create');
+Route::get('jobs', JobsController::class .'@index');
+Route::post('dispatch-job', DispatchJobController::class .'@create');

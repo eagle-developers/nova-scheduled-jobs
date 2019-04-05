@@ -1,9 +1,9 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Tests;
+namespace EagleDevelopers\NovaScheduledJobs\Tests;
 
+use EagleDevelopers\NovaScheduledJobs\NovaScheduledJobsServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Llaski\NovaScheduledJobs\NovaScheduledJobsServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
@@ -23,5 +23,4 @@ abstract class TestCase extends OrchestraTestCase
             NovaScheduledJobsServiceProvider::class,
         ];
     }
-
 }

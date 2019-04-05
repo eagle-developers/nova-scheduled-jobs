@@ -1,10 +1,9 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Schedule;
+namespace EagleDevelopers\NovaScheduledJobs\Schedule;
 
 class JobEvent extends Event
 {
-
     public function command()
     {
         return $this->event->description ?? 'Closure';
@@ -14,5 +13,4 @@ class JobEvent extends Event
     {
         return $this->event->description;
     }
-
 }

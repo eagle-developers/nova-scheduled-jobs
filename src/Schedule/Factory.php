@@ -1,6 +1,6 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Schedule;
+namespace EagleDevelopers\NovaScheduledJobs\Schedule;
 
 class Factory
 {
@@ -12,5 +12,4 @@ class Factory
 
         return new CommandEvent($event);
     }
-
 }

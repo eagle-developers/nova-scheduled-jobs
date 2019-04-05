@@ -1,14 +1,13 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Http\Controllers;
+namespace EagleDevelopers\NovaScheduledJobs\Http\Controllers;
 
+use EagleDevelopers\NovaScheduledJobs\Schedule\Factory as ScheduleFactory;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Console\Kernel;
-use Llaski\NovaScheduledJobs\Schedule\Factory as ScheduleFactory;
 
 class JobsController
 {
-
     /**
      * Return a list of all scheduled jobs
      *
@@ -35,5 +34,4 @@ class JobsController
                 ];
             });
     }
-
 }

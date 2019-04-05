@@ -1,7 +1,7 @@
 <?php
 
-namespace Llaski\NovaScheduledJobs\Tests\Fixtures\Processors;
+namespace EagleDevelopers\NovaScheduledJobs\Tests\Fixtures\Processors;
 
-class FakeOrderProcessor {
-
+class FakeOrderProcessor
+{
 }

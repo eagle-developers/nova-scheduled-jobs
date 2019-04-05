@@ -1,15 +1,15 @@
 <template>
     <div>
         <heading class="mb-4">
-            Scheduled Jobs
+            Scheduled Tasks
         </heading>
 
         <card class="h-auto p-4 mb-4 overflow-scroll">
-            <p v-if="!loading && !jobs.length">You do not currently have any scheduled jobs.</p>
+            <p v-if="! loading && ! jobs.length">You do not currently have any scheduled tasks.</p>
 
             <loader v-if="loading" class="mb-4"></loader>
 
-            <table v-if="!loading && jobs.length" class="table w-full">
+            <table v-if="! loading && jobs.length" class="table w-full">
                 <thead>
                     <tr>
                         <th class="text-left">Command/Job</th>
@@ -34,7 +34,7 @@
                         <td>{{ job.onOneServer ? 'Yes' : 'No' }}</td>
                         <td>{{ job.evenInMaintenanceMode ? 'Yes' : 'No' }}</td>
                         <td>
-                            <button                                
+                            <button
                                 title="Dispatch"
                                 class="appearance-none mr-3"
                                 :class="canDispatchCommand(job.command) ? 'text-70 hover:text-primary' : 'cursor-default text-40'"
@@ -48,13 +48,13 @@
                 </tbody>
             </table>
             <portal to="modals">
-                <transition name="fade">                    
+                <transition name="fade">
                     <dispatch-job-modal
                         v-if="confirmDispatchJobModal"
                         @confirm="confirmDispatchJob"
                         @close="confirmDispatchJobModal = false"
                         :command="dispatchJob.command"
-                    />                    
+                    />
                 </transition>
             </portal>
         </card>
@@ -62,59 +62,58 @@
 </template>
 
 <script>
-import formatters from '../mixins/formatters'
+    import formatters from '../mixins/formatters'
 
-export default {
-    mixins: [formatters],
-    
-    data: () => ({
-        jobs: [],
-        loading: false,
-        dispatchJob: null,
-        confirmDispatchJobModal: false,
-    }),
+    export default {
+        mixins: [formatters],
 
-    mounted() {
-        this.fetchJobs()
-    },
+        data: () => ({
+            jobs: [],
+            loading: false,
+            dispatchJob: null,
+            confirmDispatchJobModal: false,
+        }),
 
-    methods: {        
-
-        canDispatchCommand(command) {
-            if(command){
-                return command.includes("\Jobs")
-            }
-
-            return false;
+        mounted() {
+            this.fetchJobs()
         },
 
-        openConfirmationModal(job) {
-            this.dispatchJob = job
-            this.confirmDispatchJobModal = true
-        },
-        
-        confirmDispatchJob() {
-            const job = this.dispatchJob
-            Nova.request().post('/nova-vendor/llaski/nova-scheduled-jobs/dispatch-job', { command: job.command })
-                .then((response) => {                    
-                    this.confirmDispatchJobModal = false
-                    this.$toasted.show('The job was dispatched!', { type: 'success' })
-                }).catch((error) => {
-                    this.confirmDispatchJobModal = false
-                    this.$toasted.show(error.response.data.message, { type: 'error' })
+        methods: {
+            canDispatchCommand(command) {
+                if(command){
+                    return command.includes("\Jobs")
+                }
+
+                return false;
+            },
+
+            openConfirmationModal(job) {
+                this.dispatchJob = job
+                this.confirmDispatchJobModal = true
+            },
+
+            confirmDispatchJob() {
+                const job = this.dispatchJob
+                Nova.request().post('/nova-vendor/eagle-developers/nova-scheduled-jobs/dispatch-job', { command: job.command })
+                    .then((response) => {
+                        this.confirmDispatchJobModal = false
+                        this.$toasted.show('The job was dispatched!', { type: 'success' })
+                    }).catch((error) => {
+                        this.confirmDispatchJobModal = false
+                        this.$toasted.show(error.response.data.message, { type: 'error' })
+                    })
+            },
+
+            fetchJobs() {
+                this.loading = true
+
+                Nova.request().get('/nova-vendor/eagle-developers/nova-scheduled-jobs/jobs').then((response) => {
+                    this.loading = false
+                    this.jobs = response.data
+
+                    setTimeout(this.fetchJobs, 60 * 1000)
                 })
-        },   
-
-        fetchJobs() {
-            this.loading = true
-
-            Nova.request().get('/nova-vendor/llaski/nova-scheduled-jobs/jobs').then((response) => {
-                this.loading = false
-                this.jobs = response.data
-
-                setTimeout(this.fetchJobs, 60 * 1000)
-            })
-        },
+            },
+        }
     }
-}
 </script>
