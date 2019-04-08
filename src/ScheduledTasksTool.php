@@ -5,7 +5,7 @@ namespace EagleDevelopers\NovaScheduledTasks;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 
-class NovaScheduledTasksTool extends Tool
+class ScheduledTasksTool extends Tool
 {
     /**
      * Build the view that renders the navigation links for the tool.

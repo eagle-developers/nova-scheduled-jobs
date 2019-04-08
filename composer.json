@@ -44,7 +44,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "EagleDevelopers\\NovaScheduledTasks\\NovaScheduledTasksServiceProvider"
+                "EagleDevelopers\\NovaScheduledTasks\\ToolServiceProvider"
             ]
         }
     },

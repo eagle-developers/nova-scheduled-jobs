@@ -4,7 +4,7 @@ namespace EagleDevelopers\NovaScheduledTasks;
 
 use Laravel\Nova\Card;
 
-class NovaScheduledTasksCard extends Card
+class ScheduledTasksCard extends Card
 {
     /**
      * The width of the card (1/3, 1/2, or full).
