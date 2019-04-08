@@ -846,38 +846,38 @@ class CronSchedule
     {
         switch ($language) {
             case 'en':
-                $this->_lang['elemMin: at_the_hour'] = 'at the hour';
+                $this->_lang['elemMin: at_the_hour'] = 'on the hour';
                 $this->_lang['elemMin: after_the_hour_every_X_minute'] = 'every minute';
                 $this->_lang['elemMin: after_the_hour_every_X_minute_plural'] = 'every @1 minutes';
-                $this->_lang['elemMin: every_consecutive_minute'] = 'every consecutive minute';
-                $this->_lang['elemMin: every_consecutive_minute_plural'] = 'every consecutive @1 minutes';
+                $this->_lang['elemMin: every_consecutive_minute'] = 'every minute';
+                $this->_lang['elemMin: every_consecutive_minute_plural'] = 'every @1 minutes';
                 $this->_lang['elemMin: every_minute'] = 'every minute';
                 $this->_lang['elemMin: between_X_and_Y'] = 'from the @1 to the @2';
                 $this->_lang['elemMin: at_X:Y'] = 'At @1:@2';
                 $this->_lang['elemHour: past_X:00'] = 'past @1:00';
                 $this->_lang['elemHour: between_X:00_and_Y:59'] = 'between @1:00 and @2:59';
-                $this->_lang['elemHour: in_the_60_minutes_past_'] = 'in the 60 minutes past every consecutive hour';
-                $this->_lang['elemHour: in_the_60_minutes_past__plural'] = 'in the 60 minutes past every consecutive @1 hours';
-                $this->_lang['elemHour: past_every_consecutive_'] = 'past every consecutive hour';
-                $this->_lang['elemHour: past_every_consecutive__plural'] = 'past every consecutive @1 hours';
-                $this->_lang['elemHour: past_every_hour'] = 'past every hour';
+                $this->_lang['elemHour: in_the_60_minutes_past_'] = 'in the 60 minutes past every hour';
+                $this->_lang['elemHour: in_the_60_minutes_past__plural'] = 'in the 60 minutes past every @1 hours';
+                $this->_lang['elemHour: past_every_consecutive_'] = '';
+                $this->_lang['elemHour: past_every_consecutive__plural'] = 'every @1 hours';
+                $this->_lang['elemHour: past_every_hour'] = 'every hour';
                 $this->_lang['elemDOM: the_X'] = 'the @1';
-                $this->_lang['elemDOM: every_consecutive_day'] = 'every consecutive day';
-                $this->_lang['elemDOM: every_consecutive_day_plural'] = 'every consecutive @1 days';
-                $this->_lang['elemDOM: on_every_day'] = 'on every day';
+                $this->_lang['elemDOM: every_consecutive_day'] = 'every day';
+                $this->_lang['elemDOM: every_consecutive_day_plural'] = 'every @1 days';
+                $this->_lang['elemDOM: on_every_day'] = 'every day';
                 $this->_lang['elemDOM: between_the_Xth_and_Yth'] = 'between the @1 and the @2';
                 $this->_lang['elemDOM: on_the_X'] = 'on the @1';
                 $this->_lang['elemDOM: on_X'] = 'on @1';
                 $this->_lang['elemMonth: every_X'] = 'every @1';
-                $this->_lang['elemMonth: every_consecutive_month'] = 'every consecutive month';
-                $this->_lang['elemMonth: every_consecutive_month_plural'] = 'every consecutive @1 months';
+                $this->_lang['elemMonth: every_consecutive_month'] = 'every month';
+                $this->_lang['elemMonth: every_consecutive_month_plural'] = 'every @1 months';
                 $this->_lang['elemMonth: between_X_and_Y'] = 'from @1 to @2';
                 $this->_lang['elemMonth: of_every_month'] = 'of every month';
                 $this->_lang['elemMonth: during_every_X'] = 'during every @1';
                 $this->_lang['elemMonth: during_X'] = 'during @1';
                 $this->_lang['elemYear: in_X'] = 'in @1';
-                $this->_lang['elemYear: every_consecutive_year'] = 'every consecutive year';
-                $this->_lang['elemYear: every_consecutive_year_plural'] = 'every consecutive @1 years';
+                $this->_lang['elemYear: every_consecutive_year'] = 'every year';
+                $this->_lang['elemYear: every_consecutive_year_plural'] = 'every @1 years';
                 $this->_lang['elemYear: from_X_through_Y'] = 'from @1 through @2';
                 $this->_lang['elemDOW: on_every_day'] = 'on every day';
                 $this->_lang['elemDOW: on_X'] = 'on @1';
@@ -969,35 +969,35 @@ class CronSchedule
                 $this->_lang['elemMin: at_the_hour'] = 'op het hele uur';
                 $this->_lang['elemMin: after_the_hour_every_X_minute'] = 'elke minuut';
                 $this->_lang['elemMin: after_the_hour_every_X_minute_plural'] = 'elke @1 minuten';
-                $this->_lang['elemMin: every_consecutive_minute'] = 'elke opeenvolgende minuut';
-                $this->_lang['elemMin: every_consecutive_minute_plural'] = 'elke opeenvolgende @1 minuten';
+                $this->_lang['elemMin: every_consecutive_minute'] = 'elke minuut';
+                $this->_lang['elemMin: every_consecutive_minute_plural'] = 'elke @1 minuten';
                 $this->_lang['elemMin: every_minute'] = 'elke minuut';
                 $this->_lang['elemMin: between_X_and_Y'] = 'van de @1 tot en met de @2';
                 $this->_lang['elemMin: at_X:Y'] = 'Om @1:@2';
                 $this->_lang['elemHour: past_X:00'] = 'na @1:00';
                 $this->_lang['elemHour: between_X:00_and_Y:59'] = 'tussen @1:00 en @2:59';
-                $this->_lang['elemHour: in_the_60_minutes_past_'] = 'in de 60 minuten na elk opeenvolgend uur';
-                $this->_lang['elemHour: in_the_60_minutes_past__plural'] = 'in de 60 minuten na elke opeenvolgende @1 uren';
-                $this->_lang['elemHour: past_every_consecutive_'] = 'na elk opeenvolgend uur';
-                $this->_lang['elemHour: past_every_consecutive__plural'] = 'na elke opeenvolgende @1 uren';
+                $this->_lang['elemHour: in_the_60_minutes_past_'] = 'in de 60 minuten na elk uur';
+                $this->_lang['elemHour: in_the_60_minutes_past__plural'] = 'in de 60 minuten na elke @1 uren';
+                $this->_lang['elemHour: past_every_consecutive_'] = 'na elk uur';
+                $this->_lang['elemHour: past_every_consecutive__plural'] = 'na elke @1 uren';
                 $this->_lang['elemHour: past_every_hour'] = 'na elk uur';
                 $this->_lang['elemDOM: the_X'] = 'de @1';
-                $this->_lang['elemDOM: every_consecutive_day'] = 'elke opeenvolgende dag';
-                $this->_lang['elemDOM: every_consecutive_day_plural'] = 'elke opeenvolgende @1 dagen';
+                $this->_lang['elemDOM: every_consecutive_day'] = 'elke dag';
+                $this->_lang['elemDOM: every_consecutive_day_plural'] = 'elke @1 dagen';
                 $this->_lang['elemDOM: on_every_day'] = 'op elke dag';
                 $this->_lang['elemDOM: between_the_Xth_and_Yth'] = 'tussen de @1 en de @2';
                 $this->_lang['elemDOM: on_the_X'] = 'op de @1';
                 $this->_lang['elemDOM: on_X'] = 'op @1';
                 $this->_lang['elemMonth: every_X'] = 'elke @1';
-                $this->_lang['elemMonth: every_consecutive_month'] = 'elke opeenvolgende maand';
-                $this->_lang['elemMonth: every_consecutive_month_plural'] = 'elke opeenvolgende @1 maanden';
+                $this->_lang['elemMonth: every_consecutive_month'] = 'elke maand';
+                $this->_lang['elemMonth: every_consecutive_month_plural'] = 'elke @1 maanden';
                 $this->_lang['elemMonth: between_X_and_Y'] = 'van @1 tot @2';
                 $this->_lang['elemMonth: of_every_month'] = 'van elke maand';
                 $this->_lang['elemMonth: during_every_X'] = 'tijdens elke @1';
                 $this->_lang['elemMonth: during_X'] = 'tijdens @1';
                 $this->_lang['elemYear: in_X'] = 'in @1';
-                $this->_lang['elemYear: every_consecutive_year'] = 'elk opeenvolgend jaar';
-                $this->_lang['elemYear: every_consecutive_year_plural'] = 'elke opeenvolgende @1 jaren';
+                $this->_lang['elemYear: every_consecutive_year'] = 'elk jaar';
+                $this->_lang['elemYear: every_consecutive_year_plural'] = 'elke @1 jaren';
                 $this->_lang['elemYear: from_X_through_Y'] = 'van @1 tot en met @2';
                 $this->_lang['elemDOW: on_every_day'] = 'op elke dag';
                 $this->_lang['elemDOW: on_X'] = 'op @1';
@@ -1156,7 +1156,7 @@ class CronSchedule
 
     final private function natlangElementMinute($elem)
     {
-        if (!$elem['hasInterval']) {
+        if (! $elem['hasInterval']) {
             if ($elem['number1'] == 0) {
                 return $this->natlangApply('elemMin: at_the_hour');
             } else {
@@ -1181,7 +1181,7 @@ class CronSchedule
 
     final private function natlangElementHour($elem, $asBetween)
     {
-        if (!$elem['hasInterval']) {
+        if (! $elem['hasInterval']) {
             if ($asBetween) {
                 return $this->natlangApply('elemHour: between_X:00_and_Y:59', $this->natlangPad2($elem['number1']), $this->natlangPad2($elem['number1']));
             } else {
@@ -1211,7 +1211,7 @@ class CronSchedule
 
     final private function natlangElementDayOfMonth($elem)
     {
-        if (!$elem['hasInterval']) {
+        if (! $elem['hasInterval']) {
             return $this->natlangApply('elemDOM: the_X', $this->natlangApply('ordinal: ' . $elem['number1']));
         }
 
@@ -1231,7 +1231,7 @@ class CronSchedule
 
     final private function natlangElementMonth($elem)
     {
-        if (!$elem['hasInterval']) {
+        if (! $elem['hasInterval']) {
             return $this->natlangApply('elemMonth: every_X', $this->natlangApply('month: ' . $elem['number1']));
         }
 
@@ -1251,7 +1251,7 @@ class CronSchedule
 
     final private function natlangElementYear($elem)
     {
-        if (!$elem['hasInterval']) {
+        if (! $elem['hasInterval']) {
             return $elem['number1'];
         }
 
@@ -1424,14 +1424,13 @@ class CronSchedule
             }
 
         }
-        if ($collectDays == 127) // * all days
-        {
-            if (!$switchDaysOfWeekAreExcluding) {
+
+        if ($collectDays == 255) {
+            if (! $switchDaysOfWeekAreExcluding) {
                 $txtDays = ' ' . $this->natlangApply('elemDOM: on_every_day');
             } else {
                 $txtDays = '';
             }
-
         } else {
             $arrDays = array();
             for ($x = 0; $x <= 7; $x++) {

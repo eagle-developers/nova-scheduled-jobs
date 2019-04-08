@@ -21,18 +21,18 @@
                     <tr>
                         <th class="text-left">
                             <sortable-icon
-                                @sort="sortBy('command')"
+                                @sort="sortBy('command', true)"
                                 uri-key="command"
                             >
                                 Command
                             </sortable-icon>
                         </th>
                         <th class="text-left">Description</th>
-                        <th class="text-left">Schedule</th>
                         <th class="text-left">Expression</th>
+                        <th class="text-left">Schedule</th>
                         <th class="text-left">
                             <sortable-icon
-                                @sort="sortBy('nextRunAt')"
+                                @sort="sortBy('nextRunAt', true)"
                                 uri-key="nextRunAt"
                             >
                                 Next Run At
@@ -48,12 +48,12 @@
                     <tr v-for="(task, index) in filteredTasks">
                         <td>{{ task.command }}</td>
                         <td class="py-2">{{ task.description }}</td>
-                        <td class="py-2">{{ task.humanReadableExpression }}</td>
                         <td>{{ task.expression }}</td>
+                        <td class="py-2">{{ task.humanReadableExpression }}</td>
                         <td>{{ formatNextRunAt(task.nextRunAt) }}</td>
-                        <td>{{ task.withoutOverlapping ? 'Yes' : 'No' }}</td>
-                        <td>{{ task.onOneServer ? 'Yes' : 'No' }}</td>
-                        <td>{{ task.evenInMaintenanceMode ? 'Yes' : 'No' }}</td>
+                        <td class="text-center">{{ task.withoutOverlapping ? 'Yes' : 'No' }}</td>
+                        <td class="text-center">{{ task.onOneServer ? 'Yes' : 'No' }}</td>
+                        <td class="text-center">{{ task.evenInMaintenanceMode ? 'Yes' : 'No' }}</td>
                         <td class="text-center">
                             <button
                                 title="Dispatch"
@@ -69,7 +69,7 @@
                 </tbody>
                 <tbody v-else>
                     <tr>
-                        <td class="p-4 text-center">No scheduled tasks found.</td>
+                        <td colspan="9" class="p-4 text-center">No scheduled tasks found.</td>
                     </tr>
                 </tbody>
             </table>
@@ -99,19 +99,24 @@
             loaded: false,
             search: '',
             sort: {
-                field: '',
-                order: -1,
+                field: 'nextRunAt',
+                order: 1,
             },
             tasks: [],
         }),
 
         computed: {
             filteredTasks() {
+                if (this.sort.field != '') {
+                    this.sortBy(this.sort.field)
+                }
+
                 if (! this.search.length) {
                     return this.tasks;
                 }
 
                 const regex = this.searchRegex;
+
                 // User input is not a valid regular expression, show no results
                 if (! regex) {
                     return {};
@@ -185,15 +190,24 @@
                 this.confirmDispatchJobModal = true
             },
 
-            sortBy(field) {
+            sortBy(field, flip = false) {
+                if (flip && field == this.sort.field) {
+                    this.sort.order *= -1;
+                }
+
+                if (field != this.sort.field) {
+                    this.sort.order = 1;
+                }
+
                 this.sort.field = field;
-                this.sort.order *= -1;
 
                 this.tasks.sort((task1, task2) => {
                     let comparison = 0;
+
                     if (task1[this.sort.field] < task2[this.sort.field]) {
                         comparison = -1;
                     }
+
                     if (task1[this.sort.field] > task2[this.sort.field]) {
                         comparison = 1;
                     }

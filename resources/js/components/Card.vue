@@ -36,6 +36,7 @@
 
         data: () => {
             return {
+                limit: 5,
                 loaded: false,
                 tasks: [],
             }
@@ -47,7 +48,7 @@
 
         methods: {
             fetchTasks() {
-                Nova.request().get('/nova-vendor/eagle-developers/nova-scheduled-tasks/tasks').then((response) => {
+                Nova.request().get('/nova-vendor/eagle-developers/nova-scheduled-tasks/tasks?limit=' + this.limit).then((response) => {
                     this.tasks = response.data
                     this.loaded = true
 

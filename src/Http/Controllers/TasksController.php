@@ -5,6 +5,7 @@ namespace EagleDevelopers\NovaScheduledTasks\Http\Controllers;
 use EagleDevelopers\NovaScheduledTasks\Schedule\Factory as ScheduleFactory;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Http\Request;
 
 class TasksController
 {
@@ -15,9 +16,9 @@ class TasksController
      * @param  Schedule $schedule
      * @return array
      */
-    public function index(Kernel $kernel, Schedule $schedule)
+    public function index(Request $request, Kernel $kernel, Schedule $schedule)
     {
-        return collect($schedule->events())
+        $collectedTasks = collect($schedule->events())
             ->map(function ($event) {
                 $scheduleEvent = ScheduleFactory::make($event);
 
@@ -32,9 +33,12 @@ class TasksController
                     'onOneServer' => $scheduleEvent->onOneServer,
                     'evenInMaintenanceMode' => $scheduleEvent->evenInMaintenanceMode,
                 ];
-            })
-            ->sortBy('nextRunAt')
-            ->values()
-            ->all();
+            });
+
+        if ($request->has('limit')) {
+            $collectedTasks = $collectedTasks->sortBy('nextRunAt')->take(5)->values()->all();
+        }
+
+        return $collectedTasks;
     }
 }
