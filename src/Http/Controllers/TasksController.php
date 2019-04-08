@@ -32,7 +32,6 @@ class TasksController
                     'onOneServer' => $scheduleEvent->onOneServer,
                     'evenInMaintenanceMode' => $scheduleEvent->evenInMaintenanceMode,
                 ];
-            })
-            ->sortBy('command');
+            });
     }
 }
