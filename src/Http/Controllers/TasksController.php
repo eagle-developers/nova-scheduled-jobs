@@ -1,17 +1,17 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Http\Controllers;
+namespace EagleDevelopers\NovaScheduledTasks\Http\Controllers;
 
-use EagleDevelopers\NovaScheduledJobs\Schedule\Factory as ScheduleFactory;
+use EagleDevelopers\NovaScheduledTasks\Schedule\Factory as ScheduleFactory;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Console\Kernel;
 
-class JobsController
+class TasksController
 {
     /**
-     * Return a list of all scheduled jobs
+     * Return a list of all scheduled tasks
      *
-     * @param  Kernel   $kernel (Not sure why we need to inject the kernel, but without it we don't get the schedueld jobs. Prob something to do with how the schedule method is called from the kernel)
+     * @param  Kernel   $kernel (Not sure why this is necessary, but it is.)
      * @param  Schedule $schedule
      * @return array
      */

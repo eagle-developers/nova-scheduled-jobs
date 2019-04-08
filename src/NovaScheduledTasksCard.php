@@ -1,10 +1,10 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs;
+namespace EagleDevelopers\NovaScheduledTasks;
 
 use Laravel\Nova\Card;
 
-class NovaScheduledJobsCard extends Card
+class NovaScheduledTasksCard extends Card
 {
     /**
      * The width of the card (1/3, 1/2, or full).
@@ -20,6 +20,6 @@ class NovaScheduledJobsCard extends Card
      */
     public function component()
     {
-        return 'nova-scheduled-jobs';
+        return 'nova-scheduled-tasks';
     }
 }

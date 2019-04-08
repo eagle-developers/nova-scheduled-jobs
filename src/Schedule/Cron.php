@@ -1,6 +1,6 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Schedule;
+namespace EagleDevelopers\NovaScheduledTasks\Schedule;
 
 use Carbon\Carbon;
 use Cron\CronExpression;

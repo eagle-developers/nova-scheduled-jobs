@@ -1,8 +1,8 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Tests;
+namespace EagleDevelopers\NovaScheduledTasks\Tests;
 
-use EagleDevelopers\NovaScheduledJobs\NovaScheduledJobsServiceProvider;
+use EagleDevelopers\NovaScheduledTasks\NovaScheduledTasksServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
@@ -20,7 +20,7 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            NovaScheduledJobsServiceProvider::class,
+            NovaScheduledTasksServiceProvider::class,
         ];
     }
 }

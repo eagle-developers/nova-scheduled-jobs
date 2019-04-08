@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="NovaScheduledJobs Test Suite">
+        <testsuite name="NovaScheduledTasks Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

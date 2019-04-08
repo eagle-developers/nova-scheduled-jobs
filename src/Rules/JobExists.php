@@ -1,10 +1,10 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Rules;
+namespace EagleDevelopers\NovaScheduledTasks\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class JobExist implements Rule
+class JobExists implements Rule
 {
     public function passes($attribute, $value)
     {

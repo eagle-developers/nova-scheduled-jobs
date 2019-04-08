@@ -5,14 +5,14 @@
         </heading>
 
         <card class="h-auto p-4 mb-4 overflow-scroll">
-            <p v-if="! loading && ! jobs.length">You do not currently have any scheduled tasks.</p>
+            <p v-if="! loading && ! tasks.length">You do not currently have any scheduled tasks.</p>
 
             <loader v-if="loading" class="mb-4"></loader>
 
-            <table v-if="! loading && jobs.length" class="table w-full">
+            <table v-if="! loading && tasks.length" class="table w-full">
                 <thead>
                     <tr>
-                        <th class="text-left">Command/Job</th>
+                        <th class="text-left">Command</th>
                         <th class="text-left">Description</th>
                         <th class="text-left">Schedule</th>
                         <th class="text-left">Expression</th>
@@ -24,22 +24,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(job, index) in jobs" :job="job">
-                        <td>{{ job.command }}</td>
-                        <td class="py-2">{{ job.description }}</td>
-                        <td class="py-2">{{ job.humanReadableExpression }}</td>
-                        <td>{{ job.expression }}</td>
-                        <td>{{ formatNextRunAt(job.nextRunAt) }}</td>
-                        <td>{{ job.withoutOverlapping ? 'Yes' : 'No' }}</td>
-                        <td>{{ job.onOneServer ? 'Yes' : 'No' }}</td>
-                        <td>{{ job.evenInMaintenanceMode ? 'Yes' : 'No' }}</td>
+                    <tr v-for="(task, index) in tasks">
+                        <td>{{ task.command }}</td>
+                        <td class="py-2">{{ task.description }}</td>
+                        <td class="py-2">{{ task.humanReadableExpression }}</td>
+                        <td>{{ task.expression }}</td>
+                        <td>{{ formatNextRunAt(task.nextRunAt) }}</td>
+                        <td>{{ task.withoutOverlapping ? 'Yes' : 'No' }}</td>
+                        <td>{{ task.onOneServer ? 'Yes' : 'No' }}</td>
+                        <td>{{ task.evenInMaintenanceMode ? 'Yes' : 'No' }}</td>
                         <td>
                             <button
                                 title="Dispatch"
                                 class="appearance-none mr-3"
-                                :class="canDispatchCommand(job.command) ? 'text-70 hover:text-primary' : 'cursor-default text-40'"
-                                :disabled="!canDispatchCommand(job.command)"
-                                @click.prevent="openConfirmationModal(job)"
+                                :class="canDispatchCommand(task.command) ? 'text-70 hover:text-primary' : 'cursor-default text-40'"
+                                :disabled="! canDispatchCommand(task.command)"
+                                @click.prevent="openConfirmationModal(task)"
                             >
                                 <icon type="play" />
                             </button>
@@ -68,33 +68,33 @@
         mixins: [formatters],
 
         data: () => ({
-            jobs: [],
+            tasks: [],
             loading: false,
             dispatchJob: null,
             confirmDispatchJobModal: false,
         }),
 
         mounted() {
-            this.fetchJobs()
+            this.fetchTasks()
         },
 
         methods: {
             canDispatchCommand(command) {
-                if(command){
+                if (command) {
                     return command.includes("\Jobs")
                 }
 
                 return false;
             },
 
-            openConfirmationModal(job) {
-                this.dispatchJob = job
+            openConfirmationModal(task) {
+                this.dispatchJob = task
                 this.confirmDispatchJobModal = true
             },
 
             confirmDispatchJob() {
                 const job = this.dispatchJob
-                Nova.request().post('/nova-vendor/eagle-developers/nova-scheduled-jobs/dispatch-job', { command: job.command })
+                Nova.request().post('/nova-vendor/eagle-developers/nova-scheduled-tasks/dispatch-job', { command: job.command })
                     .then((response) => {
                         this.confirmDispatchJobModal = false
                         this.$toasted.show('The job was dispatched!', { type: 'success' })
@@ -104,14 +104,14 @@
                     })
             },
 
-            fetchJobs() {
+            fetchTasks() {
                 this.loading = true
 
-                Nova.request().get('/nova-vendor/eagle-developers/nova-scheduled-jobs/jobs').then((response) => {
+                Nova.request().get('/nova-vendor/eagle-developers/nova-scheduled-tasks/tasks').then((response) => {
                     this.loading = false
-                    this.jobs = response.data
+                    this.tasks = response.data
 
-                    setTimeout(this.fetchJobs, 60 * 1000)
+                    setTimeout(this.fetchTasks, 60 * 1000)
                 })
             },
         }

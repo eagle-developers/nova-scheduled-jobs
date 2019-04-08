@@ -9,7 +9,7 @@
             <slot :command="command">
                 <div class="p-8">
                     <heading :level="2" class="mb-6">Dispatch - <b>{{ command }}</b></heading>
-                    <p class="text-80 leading-normal">Are you sure you want to dispatch the Job?</p>
+                    <p class="text-80 leading-normal">Are you sure you want to dispatch the job?</p>
                 </div>
             </slot>
 

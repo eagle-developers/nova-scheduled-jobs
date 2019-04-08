@@ -1,8 +1,8 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Http\Controllers;
+namespace EagleDevelopers\NovaScheduledTasks\Http\Controllers;
 
-use EagleDevelopers\NovaScheduledJobs\Rules\JobExist;
+use EagleDevelopers\NovaScheduledTasks\Rules\JobExists;
 use Illuminate\Http\Request;
 
 class DispatchJobController
@@ -15,7 +15,7 @@ class DispatchJobController
     public function create(Request $request)
     {
         $data = $request->validate([
-            'command' => ['required', 'string', new JobExist]
+            'command' => ['required', 'string', new JobExists]
         ]);
 
         $command = resolve($data['command']);

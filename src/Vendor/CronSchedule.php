@@ -1,6 +1,6 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Vendor;
+namespace EagleDevelopers\NovaScheduledTasks\Vendor;
 
 /*
  * Credit to https://gist.github.com/m4tthumphrey/8236756

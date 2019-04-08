@@ -1,20 +1,20 @@
-# Nova Scheduled Jobs
+# Nova Scheduled Tasks
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/eagle-developers/nova-scheduled-jobs.svg?style=flat-square)](https://packagist.org/packages/eagle-developers/nova-scheduled-jobs)
-[![Total Downloads](https://img.shields.io/packagist/dt/eagle-developers/nova-scheduled-jobs.svg?style=flat-square)](https://packagist.org/packages/eagle-developers/nova-scheduled-jobs)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/eagle-developers/nova-scheduled-tasks.svg?style=flat-square)](https://packagist.org/packages/eagle-developers/nova-scheduled-tasks)
+[![Total Downloads](https://img.shields.io/packagist/dt/eagle-developers/nova-scheduled-tasks.svg?style=flat-square)](https://packagist.org/packages/eagle-developers/nova-scheduled-tasks)
 
-## Includes both a tool and card to display your scheduled commands and jobs
+## Includes both a tool and card to display your scheduled commands and tasks
 
-![Nova Scheduled Jobs Tool Screenshot](https://raw.githubusercontent.com/llaski/screenshots/master/nova-scheduled-jobs-tool.png)
+![Nova Scheduled Tasks Tool Screenshot](https://user-images.githubusercontent.com/4362516/55746628-c64d5480-59ff-11e9-99a7-5d4de353d1d8.png)
 
-![Nova Scheduled Jobs Card Screenshot](https://raw.githubusercontent.com/llaski/screenshots/master/nova-scheduled-jobs-card.png)
+![Nova Scheduled Tasks Card Screenshot](https://user-images.githubusercontent.com/4362516/55746634-cbaa9f00-59ff-11e9-968e-c8c66a5fe2d4.png)
 
 ## Installation
 
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
-composer require eagle-developers/nova-scheduled-jobs
+composer require eagle-developers/nova-scheduled-tasks
 ```
 
 To setup the tool, you must register the tool with Nova. This is typically done in the `tools` method of the `NovaServiceProvider`.
@@ -28,7 +28,7 @@ public function tools()
 {
     return [
         // ...
-        new \EagleDevelopers\NovaScheduledJobs\NovaScheduledJobsTool,
+        new \EagleDevelopers\NovaScheduledTasks\NovaScheduledTasksTool,
     ];
 }
 ```
@@ -44,7 +44,7 @@ public function cards()
 {
     return [
         // ...
-        new \EagleDevelopers\NovaScheduledJobs\NovaScheduledJobsCard,
+        new \EagleDevelopers\NovaScheduledTasks\NovaScheduledTasksCard,
     ];
 }
 ```
@@ -62,10 +62,6 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Security
-
-If you discover any security related issues, please email larry.laski@gmail.com instead of using the issue tracker.
 
 ## Credits
 

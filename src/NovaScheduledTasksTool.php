@@ -1,11 +1,11 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs;
+namespace EagleDevelopers\NovaScheduledTasks;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 
-class NovaScheduledJobsTool extends Tool
+class NovaScheduledTasksTool extends Tool
 {
     /**
      * Build the view that renders the navigation links for the tool.
@@ -14,6 +14,6 @@ class NovaScheduledJobsTool extends Tool
      */
     public function renderNavigation()
     {
-        return view('nova-scheduled-jobs::navigation');
+        return view('nova-scheduled-tasks::navigation');
     }
 }

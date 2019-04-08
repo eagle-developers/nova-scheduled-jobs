@@ -1,8 +1,8 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Tests\Fixtures\Jobs;
+namespace EagleDevelopers\NovaScheduledTasks\Tests\Fixtures\Jobs;
 
-use EagleDevelopers\NovaScheduledJobs\Tests\Fixtures\Processors\FakeOrderProcessor;
+use EagleDevelopers\NovaScheduledTasks\Tests\Fixtures\Processors\FakeOrderProcessor;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

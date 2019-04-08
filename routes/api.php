@@ -1,7 +1,7 @@
 <?php
 
-use EagleDevelopers\NovaScheduledJobs\Http\Controllers\DispatchJobController;
-use EagleDevelopers\NovaScheduledJobs\Http\Controllers\JobsController;
+use EagleDevelopers\NovaScheduledTasks\Http\Controllers\DispatchJobController;
+use EagleDevelopers\NovaScheduledTasks\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('jobs', JobsController::class .'@index');
+Route::get('tasks', TasksController::class .'@index');
 Route::post('dispatch-job', DispatchJobController::class .'@create');

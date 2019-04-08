@@ -1,29 +1,29 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Tests;
+namespace EagleDevelopers\NovaScheduledTasks\Tests;
 
 use Cron\CronExpression;
-use EagleDevelopers\NovaScheduledJobs\Schedule\Cron;
-use EagleDevelopers\NovaScheduledJobs\Tests\Fixtures\Jobs\UpdateOrders;
-use EagleDevelopers\NovaScheduledJobs\Vendor\CronSchedule;
+use EagleDevelopers\NovaScheduledTasks\Schedule\Cron;
+use EagleDevelopers\NovaScheduledTasks\Tests\Fixtures\Jobs\UpdateOrders;
+use EagleDevelopers\NovaScheduledTasks\Vendor\CronSchedule;
 use Illuminate\Support\Carbon;
 
-class ListJobsTest extends TestCase
+class ListTasksTest extends TestCase
 {
     /** @test */
-    public function itReturnsAnEmptyArrayIfThereAreNoJobsScheduled()
+    public function itReturnsAnEmptyArrayIfThereAreNoTasksScheduled()
     {
-        $response = $this->getJson('nova-vendor/eagle-developers/nova-scheduled-jobs/jobs');
+        $response = $this->getJson('nova-vendor/eagle-developers/nova-scheduled-tasks/tasks');
 
         $response->assertStatus(200);
         $response->assertJson([]);
     }
 
     /** @test */
-    public function itReturnsAListOfScheduledJobs()
+    public function itReturnsAListOfScheduledTasks()
     {
-        $kernel = app('EagleDevelopers\NovaScheduledJobs\Tests\Fakes\Kernel', [
-            'scheduledJobs' => [
+        $kernel = app('EagleDevelopers\NovaScheduledTasks\Tests\Fakes\Kernel', [
+            'scheduledTasks' => [
                 [
                     'command' => 'cache:clear',
                     'schedule' => 'everyFiveMinutes',
@@ -47,9 +47,10 @@ class ListJobsTest extends TestCase
                 ],
             ],
         ]);
+
         app()->instance('Illuminate\Contracts\Console\Kernel', $kernel);
 
-        $response = $this->getJson('nova-vendor/eagle-developers/nova-scheduled-jobs/jobs');
+        $response = $this->getJson('nova-vendor/eagle-developers/nova-scheduled-tasks/tasks');
 
         $response->assertStatus(200);
         $response->assertJson([

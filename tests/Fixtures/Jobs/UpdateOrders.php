@@ -1,6 +1,6 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Tests\Fixtures\Jobs;
+namespace EagleDevelopers\NovaScheduledTasks\Tests\Fixtures\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

@@ -1,6 +1,6 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Tests\Fakes;
+namespace EagleDevelopers\NovaScheduledTasks\Tests\Fakes;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -12,19 +12,19 @@ class Kernel extends ConsoleKernel
     /**
      * @var array
      */
-    private $scheduledJobs;
+    private $scheduledTasks;
 
     /**
      * Create a new console kernel instance.
      *
      * @param  \Illuminate\Contracts\Foundation\Application  $app
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events
-     * @param  array $scheduledJobs
+     * @param  array $scheduledTasks
      * @return void
      */
-    public function __construct(Application $app, Dispatcher $events, $scheduledJobs = [])
+    public function __construct(Application $app, Dispatcher $events, $scheduledTasks = [])
     {
-        $this->scheduledJobs = collect($scheduledJobs);
+        $this->scheduledTasks = collect($scheduledTasks);
 
         parent::__construct($app, $events);
     }
@@ -37,16 +37,16 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        collect($this->scheduledJobs)->each(function ($job) use ($schedule) {
-            if (array_has($job, 'job')) {
-                $command = $schedule->job($job['job']);
+        collect($this->scheduledTasks)->each(function ($task) use ($schedule) {
+            if (array_has($task, 'job')) {
+                $command = $schedule->job($task['job']);
             } else {
-                $command = $schedule->command($job['command']);
+                $command = $schedule->command($task['command']);
             }
 
-            $command->{$job['schedule']}();
+            $command->{$task['schedule']}();
 
-            collect(array_get($job, 'additionalOptions', []))->each(function ($additionalOption) use ($command) {
+            collect(array_get($task, 'additionalOptions', []))->each(function ($additionalOption) use ($command) {
                 $command->{$additionalOption}();
             });
         });

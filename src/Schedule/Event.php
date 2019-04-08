@@ -1,8 +1,8 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Schedule;
+namespace EagleDevelopers\NovaScheduledTasks\Schedule;
 
-use EagleDevelopers\NovaScheduledJobs\Vendor\CronSchedule;
+use EagleDevelopers\NovaScheduledTasks\Vendor\CronSchedule;
 
 abstract class Event
 {

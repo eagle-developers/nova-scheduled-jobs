@@ -1,6 +1,6 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs\Tests\Fixtures\Processors;
+namespace EagleDevelopers\NovaScheduledTasks\Tests\Fixtures\Processors;
 
 class FakeOrderProcessor
 {

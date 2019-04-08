@@ -1,11 +1,11 @@
 {
-    "name": "eagle-developers/nova-scheduled-jobs",
-    "description": "A Laravel Nova card to view your scheduled jobs.",
+    "name": "eagle-developers/nova-scheduled-tasks",
+    "description": "A Laravel Nova card to view your scheduled tasks.",
     "keywords": [
         "laravel",
         "nova"
     ],
-    "homepage": "https://github.com/eagle-developers/nova-scheduled-jobs",
+    "homepage": "https://github.com/eagle-developers/nova-scheduled-tasks",
     "license": "MIT",
     "authors": [
         {
@@ -33,18 +33,18 @@
     },
     "autoload": {
         "psr-4": {
-            "EagleDevelopers\\NovaScheduledJobs\\": "src/"
+            "EagleDevelopers\\NovaScheduledTasks\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EagleDevelopers\\NovaScheduledJobs\\Tests\\": "tests"
+            "EagleDevelopers\\NovaScheduledTasks\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "EagleDevelopers\\NovaScheduledJobs\\NovaScheduledJobsServiceProvider"
+                "EagleDevelopers\\NovaScheduledTasks\\NovaScheduledTasksServiceProvider"
             ]
         }
     },

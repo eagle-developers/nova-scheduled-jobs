@@ -1,6 +1,6 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs;
+namespace EagleDevelopers\NovaScheduledTasks;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool as BaseTool;
@@ -14,7 +14,7 @@ class Tool extends BaseTool
      */
     public function boot()
     {
-        Nova::script('nova-scheduled-jobs', __DIR__.'/../dist/js/tool.js');
+        Nova::script('nova-scheduled-tasks', __DIR__.'/../dist/js/tool.js');
     }
 
     /**
@@ -24,6 +24,6 @@ class Tool extends BaseTool
      */
     public function renderNavigation()
     {
-        return view('NovaScheduledJobsTool::navigation');
+        return view('NovaScheduledTasksTool::navigation');
     }
 }

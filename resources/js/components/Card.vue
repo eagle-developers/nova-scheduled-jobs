@@ -2,23 +2,23 @@
     <card class="h-auto p-4">
         <h2 class="text-90 font-light mb-4">Scheduled Tasks</h2>
 
-        <p v-if="! loading && ! jobs.length">You do not currently have any scheduled tasks.</p>
+        <p v-if="! loading && ! tasks.length">You do not currently have any scheduled tasks.</p>
 
         <loader v-if="loading" class="mb-4"></loader>
 
-        <table v-if="! loading && jobs.length" class="table w-full">
+        <table v-if="! loading && tasks.length" class="table w-full">
             <thead>
                 <tr>
-                    <th class="text-left">Command/Job</th>
+                    <th class="text-left">Command</th>
                     <th class="text-left">Expression</th>
                     <th class="text-left">Next Run At</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(job, index) in jobs" :job="job">
-                    <td>{{ job.command }}</td>
-                    <td>{{ job.expression }}</td>
-                    <td>{{ formatNextRunAt(job.nextRunAt) }}</td>
+                <tr v-for="(task, index) in tasks" :task="task">
+                    <td>{{ task.command }}</td>
+                    <td>{{ task.expression }}</td>
+                    <td>{{ formatNextRunAt(task.nextRunAt) }}</td>
                 </tr>
             </tbody>
         </table>
@@ -37,24 +37,24 @@
         data: () => {
             return {
                 loading: false,
-                jobs: [],
+                tasks: [],
             }
         },
 
         mounted() {
             console.log('got here')
-            this.fetchJobs()
+            this.fetchTasks()
         },
 
         methods: {
-            fetchJobs() {
+            fetchTasks() {
                 this.loading = true
 
-                Nova.request().get('/nova-vendor/eagle-developers/nova-scheduled-jobs/jobs').then((response) => {
+                Nova.request().get('/nova-vendor/eagle-developers/nova-scheduled-tasks/tasks').then((response) => {
                     this.loading = false
-                    this.jobs = response.data
+                    this.tasks = response.data
 
-                    setTimeout(this.fetchJobs, 60 * 1000)
+                    setTimeout(this.fetchTasks, 60 * 1000)
                 })
             },
         }

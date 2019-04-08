@@ -1,13 +1,13 @@
 <?php
 
-namespace EagleDevelopers\NovaScheduledJobs;
+namespace EagleDevelopers\NovaScheduledTasks;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
 
-class NovaScheduledJobsServiceProvider extends ServiceProvider
+class NovaScheduledTasksServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -16,14 +16,14 @@ class NovaScheduledJobsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nova-scheduled-jobs');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nova-scheduled-tasks');
 
         $this->app->booted(function () {
             $this->routes();
         });
 
         Nova::serving(function (ServingNova $event) {
-            Nova::script('nova-scheduled-jobs', __DIR__ . '/../dist/js/app.js');
+            Nova::script('nova-scheduled-tasks', __DIR__ . '/../dist/js/app.js');
         });
     }
 
@@ -39,7 +39,7 @@ class NovaScheduledJobsServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova'])
-            ->prefix('nova-vendor/eagle-developers/nova-scheduled-jobs')
+            ->prefix('nova-vendor/eagle-developers/nova-scheduled-tasks')
             ->group(__DIR__ . '/../routes/api.php');
     }
 }
