@@ -5,11 +5,11 @@
         </heading>
 
         <card class="h-auto p-4 mb-4 overflow-scroll">
-            <p v-if="! loading && ! tasks.length">You do not currently have any scheduled tasks.</p>
+            <p v-if="loaded && ! tasks.length">You do not currently have any scheduled tasks.</p>
 
-            <loader v-if="loading" class="mb-4"></loader>
+            <loader v-if="! loaded" class="mb-4"></loader>
 
-            <table v-if="! loading && tasks.length" class="table w-full">
+            <table v-if="loaded && tasks.length" class="table w-full">
                 <thead>
                     <tr>
                         <th class="text-left">Command</th>
@@ -69,7 +69,7 @@
 
         data: () => ({
             tasks: [],
-            loading: false,
+            loaded: false,
             dispatchJob: null,
             confirmDispatchJobModal: false,
         }),
@@ -105,11 +105,11 @@
             },
 
             fetchTasks() {
-                this.loading = true
-
                 Nova.request().get('/nova-vendor/eagle-developers/nova-scheduled-tasks/tasks').then((response) => {
-                    this.loading = false
                     this.tasks = response.data
+                    this.loaded = true
+
+                    setTimeout(this.fetchTasks, 60 * 1000)
                 })
             },
         }
