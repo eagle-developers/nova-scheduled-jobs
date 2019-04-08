@@ -110,8 +110,6 @@
                 Nova.request().get('/nova-vendor/eagle-developers/nova-scheduled-tasks/tasks').then((response) => {
                     this.loading = false
                     this.tasks = response.data
-
-                    setTimeout(this.fetchTasks, 60 * 1000)
                 })
             },
         }
