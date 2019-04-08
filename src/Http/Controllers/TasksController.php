@@ -33,7 +33,7 @@ class TasksController
                     'evenInMaintenanceMode' => $scheduleEvent->evenInMaintenanceMode,
                 ];
             })
-            ->sortBy('command')
+            ->sortBy('nextRunAt')
             ->values()
             ->all();
     }
