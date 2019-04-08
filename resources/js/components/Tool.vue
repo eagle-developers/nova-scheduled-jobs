@@ -4,7 +4,7 @@
             Scheduled Tasks
         </heading>
 
-        <card class="h-auto p-4 mb-4 overflow-scroll">
+        <card class="h-auto mb-4 overflow-x-auto">
             <p v-if="loaded && ! tasks.length">You do not currently have any scheduled tasks.</p>
 
             <loader v-if="! loaded" class="mb-4"></loader>
