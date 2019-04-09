@@ -2,13 +2,13 @@
 
 namespace EagleDevelopers\NovaScheduledTasks\Tests;
 
-use EagleDevelopers\NovaScheduledTasks\NovaScheduledTasksServiceProvider;
+use EagleDevelopers\NovaScheduledTasks\ToolServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
@@ -20,7 +20,7 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            NovaScheduledTasksServiceProvider::class,
+            ToolServiceProvider::class,
         ];
     }
 }

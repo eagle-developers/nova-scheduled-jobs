@@ -37,7 +37,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        collect($this->scheduledTasks)->each(function ($task) use ($schedule) {
+        $this->scheduledTasks->each(function ($task) use ($schedule) {
             if (array_has($task, 'job')) {
                 $command = $schedule->job($task['job']);
             } else {
