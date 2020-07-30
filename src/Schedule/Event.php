@@ -3,6 +3,7 @@
 namespace EagleDevelopers\NovaScheduledTasks\Schedule;
 
 use EagleDevelopers\NovaScheduledTasks\Vendor\CronSchedule;
+use Illuminate\Support\Arr;
 
 abstract class Event
 {
@@ -22,7 +23,7 @@ abstract class Event
         try {
             $reflection = new \ReflectionClass($this->className());
 
-            return (string) array_get($reflection->getDefaultProperties(), 'description', '');
+            return (string) Arr::get($reflection->getDefaultProperties(), 'description', '');
         } catch (\ReflectionException $exception) {
             return '';
         }
